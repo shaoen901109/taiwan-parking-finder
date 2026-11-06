@@ -1,0 +1,12 @@
+services:
+  parking-web:
+    build: .
+    ports:
+      - "8000:8000"
+    env_file: .env
+    environment:
+      - BASE_PATH=/parking
+      - TZ=Asia/Taipei
+    volumes:
+      - ./data:/app/data     # runtime cache of TDX base data
+    restart: unless-stopped

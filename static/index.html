@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f6f7f9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#15181d" media="(prefers-color-scheme: dark)">
+<title>找停車位</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232563eb'/%3E%3Cpath d='M12 24V8h6a5 5 0 0 1 0 10h-6' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="static/app.css?v=3">
+</head>
+<body>
+<div id="map"></div>
+
+<div id="topbar">
+  <button id="btnVehicle" class="fab" aria-label="車種" title="車種"><svg class="ic"><use href="static/icons/sprite.svg?v=3#car"/></svg></button>
+  <button id="btnRadius" class="fab" aria-label="範圍" title="範圍"><span id="radiusTxt">800</span></button>
+  <button id="btnSort" class="fab" aria-label="排序" title="排序"><svg class="ic"><use href="static/icons/sprite.svg?v=3#ruler"/></svg></button>
+  <button id="btnRefresh" class="fab" aria-label="重新整理" title="重新整理"><svg class="ring" viewBox="0 0 48 48" aria-hidden="true"><circle class="ring-bg" cx="24" cy="24" r="22"/><circle id="ringFg" class="ring-fg" cx="24" cy="24" r="22"/></svg><svg class="ic"><use href="static/icons/sprite.svg?v=3#refresh-cw"/></svg><span id="ageBadge" class="badge" hidden></span></button>
+  <button id="btnOcc" class="fab" aria-label="顯示有車格" title="顯示有車格"><svg class="ic"><use href="static/icons/sprite.svg?v=3#eye"/></svg></button>
+  <button id="btnLocate" class="fab" aria-label="我的位置" title="我的位置"><svg class="ic"><use href="static/icons/sprite.svg?v=3#locate-fixed"/></svg></button>
+</div>
+
+<div id="chips">
+  <div id="chipLoading" class="chip" hidden><svg class="ic spin"><use href="static/icons/sprite.svg?v=3#refresh-cw"/></svg><span id="loadSec"></span></div>
+  <button id="chipHere" class="chip chip-btn" hidden aria-label="搜尋此區" title="搜尋此區"><svg class="ic"><use href="static/icons/sprite.svg?v=3#search"/></svg><svg class="ic"><use href="static/icons/sprite.svg?v=3#map-pin"/></svg></button>
+  <div id="chipEmpty" class="chip" hidden><svg class="ic"><use href="static/icons/sprite.svg?v=3#inbox"/></svg><span>附近無資料</span></div>
+  <div id="chipError" class="chip chip-err" hidden><svg class="ic"><use href="static/icons/sprite.svg?v=3#triangle-alert"/></svg><button id="btnRetry" class="retry">重試</button></div>
+  <div id="chipNoLoc" class="chip chip-small" hidden title="未開啟定位" aria-label="未開啟定位"><svg class="ic"><use href="static/icons/sprite.svg?v=3#locate-off"/></svg></div>
+</div>
+
+<section id="sheet" class="peek" hidden>
+  <div id="grab" role="button" aria-label="展開或收合" tabindex="0"><span class="bar"></span></div>
+  <ul id="list"></ul>
+</section>
+
+<section id="detail" hidden>
+  <div class="d-head">
+    <span id="dKind" class="kind"></span>
+    <h2 id="dName"></h2>
+    <button id="dClose" class="icon-btn" aria-label="關閉" title="關閉"><svg class="ic"><use href="static/icons/sprite.svg?v=3#x"/></svg></button>
+  </div>
+  <div class="d-body">
+    <div class="d-num"><b id="dAvail"></b><small id="dTotal"></small></div>
+    <div class="d-meta">
+      <span id="dDist"></span>
+      <span id="dTime" class="dim"></span>
+    </div>
+    <a id="dNav" class="nav-btn" target="_blank" rel="noopener" aria-label="導航" title="導航"><svg class="ic"><use href="static/icons/sprite.svg?v=3#navigation"/></svg></a>
+  </div>
+  <p id="dFare" class="fare" hidden></p>
+</section>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="static/app.js?v=3"></script>
+</body>
+</html>

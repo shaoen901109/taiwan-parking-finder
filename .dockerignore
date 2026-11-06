@@ -1,0 +1,6 @@
+# Allowlist: only send the files the image needs (keep this file ASCII-only for older Docker versions)
+*
+!app
+!static
+!requirements.txt
+**/__pycache__
