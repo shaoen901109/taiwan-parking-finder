@@ -2,6 +2,8 @@
 
 [English](README.md) | 繁體中文
 
+> 📖 **圖文教學：** https://shao-en.com/blog/taiwan-parking-finder-guide.html ——如果你不知道該如何操作，請把這篇文章交給你的 Claude 或 ChatGPT。
+
 用交通部 TDX 開放資料做的手機版網頁，顯示附近停車場與路邊停車格的即時空位。手機打開就會在地圖上跟著你的位置走。
 
 ## 功能

@@ -2,6 +2,8 @@
 
 English | [繁體中文](README.zh-TW.md)
 
+> 📖 **Step-by-step tutorial (Traditional Chinese):** https://shao-en.com/blog/taiwan-parking-finder-guide.html — not sure how to set it up? Hand the article to Claude or ChatGPT and let it walk you through.
+
 A mobile-friendly web page that shows nearby parking lots and live on-street parking-space availability in Taiwan, using the TDX open data platform. Open it on your phone, and it follows your position on a map.
 
 ## Features
