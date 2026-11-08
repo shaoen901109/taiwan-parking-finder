@@ -54,6 +54,28 @@ Then open http://localhost:8000/parking/. The `data/` folder holds runtime cache
 - Map tiles come from the OpenStreetMap public tile server, which has a [usage policy](https://operations.osmfoundation.org/policies/tiles/). For heavy use, self-host tiles or switch to another tile provider.
 - Leaflet is loaded from unpkg (pinned version).
 
+## Verify your download
+
+Download `taiwan-parking-finder-v1.0.0.zip` and `SHA256SUMS.txt` from [Releases](https://github.com/shaoen901109/taiwan-parking-finder/releases) (use the version you actually downloaded).
+
+1. Compare the checksum in PowerShell:
+
+   ```powershell
+   Get-FileHash .\taiwan-parking-finder-v1.0.0.zip -Algorithm SHA256
+   ```
+
+   The `Hash` must match the string in `SHA256SUMS.txt` (letter case does not matter).
+
+2. Verify where it was built (needs [GitHub CLI](https://cli.github.com/)):
+
+   ```powershell
+   gh attestation verify .\taiwan-parking-finder-v1.0.0.zip --repo shaoen901109/taiwan-parking-finder
+   ```
+
+   A successful result means GitHub Actions built this zip from this repository's source and it was not swapped along the way.
+
+Commits marked **Verified** on GitHub are signed by the author.
+
 ## Credits
 
 | Purpose | Project | License |

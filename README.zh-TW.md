@@ -54,6 +54,28 @@ docker compose up -d --build
 - 地圖圖磚來自 OpenStreetMap 公用圖磚伺服器，有[使用政策](https://operations.osmfoundation.org/policies/tiles/)。大量使用請自架圖磚或改用其他供應商。
 - Leaflet 由 unpkg 載入（已鎖定版本）。
 
+## 校驗下載檔
+
+到 [Releases](https://github.com/shaoen901109/taiwan-parking-finder/releases) 下載 `taiwan-parking-finder-v1.0.0.zip` 和 `SHA256SUMS.txt`（版本號以你實際下載的為準）。
+
+1. 用 PowerShell 比對指紋（SHA256，檔案的數位指紋）：
+
+   ```powershell
+   Get-FileHash .\taiwan-parking-finder-v1.0.0.zip -Algorithm SHA256
+   ```
+
+   輸出的 `Hash` 要和 `SHA256SUMS.txt` 裡的字串一致（大小寫不同沒關係）。
+
+2. 驗證來源（需安裝 [GitHub CLI](https://cli.github.com/)）：
+
+   ```powershell
+   gh attestation verify .\taiwan-parking-finder-v1.0.0.zip --repo shaoen901109/taiwan-parking-finder
+   ```
+
+   顯示驗證成功，代表這個 zip 是 GitHub Actions 從本 repo 原始碼建出來的，中途沒有被替換。
+
+GitHub 上標示 **Verified** 的 commit，是作者本人簽章。
+
 ## 技術來源與致謝
 
 | 用途 | 專案 | 授權 |
